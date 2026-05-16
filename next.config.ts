@@ -1,7 +1,9 @@
 import type { NextConfig } from "next";
 
+const distDir = process.env.NEXT_DIST_DIR?.trim();
+
 const nextConfig: NextConfig = {
-  distDir: process.env.NEXT_DIST_DIR || ".next-app",
+  ...(distDir ? { distDir } : {}),
   poweredByHeader: false,
   reactStrictMode: true,
   experimental: {
@@ -10,4 +12,3 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
-
